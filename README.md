@@ -1,2 +1,1 @@
-Agile-Java-Learning_SIS
-=======================
+This is a student information system which is produced when learning the book Agile Java™: Crafting Code with Test-Driven Development. Most of the codes are written according to instructions and guidelines of the author of the book.
