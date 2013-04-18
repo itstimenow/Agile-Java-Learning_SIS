@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # clear the screen at first
 clear
