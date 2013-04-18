@@ -42,15 +42,14 @@ public class CourseSession {
     
     private static void incrementCount() {
         ++count;
-    }
+    }    
     
     
-    
-    String getDepartment() {
+    public String getDepartment() {
         return department;
     }
     
-    String getNumber() {
+    public String getNumber() {
         return number;
     }
     
