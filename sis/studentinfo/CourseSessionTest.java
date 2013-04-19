@@ -27,7 +27,7 @@ public class CourseSessionTest extends TestCase {
         assertEquals(1, session.getNumberOfStudents());
         assertEquals(student1, session.get(0));
         
-        ArrayList<Student> students = session.getAllStudents();
+        List<Student> students = session.getAllStudents();
         assertEquals(1, students.size());
         assertEquals(student1, students.get(0));
         

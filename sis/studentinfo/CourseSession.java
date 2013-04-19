@@ -12,7 +12,7 @@ public class CourseSession implements Comparable<CourseSession> {
     
     private String department;
     private String number;
-    private ArrayList<Student> students = new ArrayList<Student>();
+    private List<Student> students = new ArrayList<Student>();
     private Date startDate;
     private int numberOfCredits;
     
@@ -65,7 +65,7 @@ public class CourseSession implements Comparable<CourseSession> {
         return students.size();
     }
     
-    public ArrayList<Student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return students;
     }
     

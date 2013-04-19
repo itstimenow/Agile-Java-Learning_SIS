@@ -1,6 +1,6 @@
 package sis.studentinfo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Student {
     enum Grade { A, B, C, D, F }
@@ -11,7 +11,7 @@ public class Student {
     private String name;
     private int credits = 0;
     private String state = "";
-    private ArrayList<Grade> grades = new ArrayList<Grade>();
+    private List<Grade> grades = new ArrayList<Grade>();
     private GradingStrategy gradingStrategy = new RegularGradingStrategy();
     
     public Student(String name) {
