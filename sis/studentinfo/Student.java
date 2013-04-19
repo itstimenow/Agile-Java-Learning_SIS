@@ -48,17 +48,17 @@ public class Student {
             return 0.0;
         
         double total = 0.0;
-        for (String grade : grades) {
-            if (grade.equals("A"))
-                total += 4;
-            else if (grade.equals("B"))
-                total += 3;
-            else if (grade.equals("C"))
-                total += 2;
-            else if (grade.equals("D"))
-                total += 1;
-        }
+        for (String grade : grades)
+            total += gradePointFor(grade);
         
         return total / grades.size();
+    }
+    
+    private double gradePointFor(String grade) {
+        if (grade.equals("A")) return 4.0;
+        if (grade.equals("B")) return 3.0;
+        if (grade.equals("C")) return 2.0;
+        if (grade.equals("D")) return 1.0;
+        return 0.0;
     }
 }
