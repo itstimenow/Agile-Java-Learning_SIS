@@ -3,13 +3,15 @@ package sis.studentinfo;
 import java.util.ArrayList;
 
 public class Student {
+    enum Grade { A, B, C, D, F }
+    
     static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     static final String IN_STATE = "CO";
     
     private String name;
     private int credits = 0;
     private String state = "";
-    private ArrayList<String> grades = new ArrayList<String>();
+    private ArrayList<Grade> grades = new ArrayList<Grade>();
     
     public Student(String name) {
         this.name = name;
@@ -39,7 +41,7 @@ public class Student {
         return state.equals(Student.IN_STATE);
     }
     
-    void addGrade(String grade) {
+    void addGrade(Grade grade) {
         grades.add(grade);
     }
     
@@ -48,17 +50,18 @@ public class Student {
             return 0.0;
         
         double total = 0.0;
-        for (String grade : grades)
-            total += gradePointFor(grade);
+        for (Grade grade : grades)
+            total += gradePointsFor(grade);
         
         return total / grades.size();
     }
     
-    private double gradePointFor(String grade) {
-        if (grade.equals("A")) return 4.0;
-        if (grade.equals("B")) return 3.0;
-        if (grade.equals("C")) return 2.0;
-        if (grade.equals("D")) return 1.0;
-        return 0.0;
+    private int gradePointsFor(Grade grade) {
+        if (grade == Grade.A) return 4;
+        if (grade == Grade.B) return 3;
+        if (grade == Grade.C) return 2;
+        if (grade == Grade.D) return 1;
+        
+        return 0;
     }
 }
