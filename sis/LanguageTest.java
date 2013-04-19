@@ -36,4 +36,10 @@ public class LanguageTest extends TestCase {
         assertEquals("Camus", list.get(2));
         assertEquals("Boyle", list.get(3));
     }
+    
+    public void testStringCompareTo() {
+        assertTrue("A".compareTo("B") < 0);
+        assertEquals(0, "A".compareTo("A"));
+        assertTrue("B".compareTo("A") > 0);
+    }
 }

@@ -17,7 +17,7 @@
     <target name="build" depends="init" description="build all">
         <javac srcdir="${src.dir}" destdir="${build.dir}" 
                includes="**"
-               excludes="bin/**,doc/**,Exercise/**" 
+               excludes="bin/**,doc/**" 
                source="1.6" 
                deprecation="on" debug="on" optimize="off"
                includeantruntime="false">
