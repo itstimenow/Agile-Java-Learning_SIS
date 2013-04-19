@@ -12,6 +12,7 @@ public class Student {
     private int credits = 0;
     private String state = "";
     private ArrayList<Grade> grades = new ArrayList<Grade>();
+    private GradingStrategy gradingStrategy = new RegularGradingStrategy();
     
     public Student(String name) {
         this.name = name;
@@ -20,17 +21,9 @@ public class Student {
     public String getName() {
         return name;
     }
-    
-    boolean isFullTime() {
-        return credits >= CREDITS_REQUIRED_FOR_FULL_TIME;
-    }
-    
+        
     int getCredits() {
         return credits;
-    }
-    
-    void addCredits(int credits) {
-        this.credits += credits;
     }
     
     void setState(String state) {
@@ -39,6 +32,18 @@ public class Student {
     
     boolean isInState() {
         return state.equals(Student.IN_STATE);
+    }    
+    
+    boolean isFullTime() {
+        return credits >= CREDITS_REQUIRED_FOR_FULL_TIME;
+    }
+    
+    void addCredits(int credits) {
+        this.credits += credits;
+    }
+    
+    void setGradingStrategy(GradingStrategy gradingStrategy) {
+        this.gradingStrategy = gradingStrategy;
     }
     
     void addGrade(Grade grade) {
@@ -51,17 +56,8 @@ public class Student {
         
         double total = 0.0;
         for (Grade grade : grades)
-            total += gradePointsFor(grade);
+            total += gradingStrategy.getGradePointsFor(grade);
         
         return total / grades.size();
-    }
-    
-    private int gradePointsFor(Grade grade) {
-        if (grade == Grade.A) return 4;
-        if (grade == Grade.B) return 3;
-        if (grade == Grade.C) return 2;
-        if (grade == Grade.D) return 1;
-        
-        return 0;
     }
 }
