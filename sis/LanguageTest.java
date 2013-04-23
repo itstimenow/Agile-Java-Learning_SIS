@@ -45,8 +45,8 @@ public class LanguageTest extends TestCase {
     
     enum Result { Good, Bad, Well };
     public void testEnum() {
-        System.out.println(Result.Good);
-        System.out.println(Result.Bad);
-        System.out.println(Result.Well);
+        //System.out.println(Result.Good);
+        //System.out.println(Result.Bad);
+        //System.out.println(Result.Well);
     }
 }

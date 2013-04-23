@@ -3,7 +3,7 @@ package sis.studentinfo;
 import java.util.*;
 
 public class Student {
-    enum Grade { A, B, C, D, F }
+    public enum Grade { A, B, C, D, F }
     
     static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     static final String IN_STATE = "CO";
