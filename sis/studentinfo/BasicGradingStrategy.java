@@ -1,6 +1,8 @@
 package sis.studentinfo;
 
-public class BasicGradingStrategy {
+public abstract class BasicGradingStrategy implements GradingStrategy {
+    public abstract int getGradePointsFor(Student.Grade grade);
+    
     int basicGradePointsFor(Student.Grade grade) {
         switch(grade) {
             case A: return 4;
