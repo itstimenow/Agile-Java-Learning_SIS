@@ -1,9 +1,9 @@
-package sis;
+package languageTest;
 
 import java.util.*;
 import junit.framework.TestCase;
 
-public class LanguageTest extends TestCase {
+public class SortTest extends TestCase {
     public void testSortStringsInPlace() {
         ArrayList<String> list = new ArrayList<String>();
         list.add("Heller");
@@ -41,12 +41,5 @@ public class LanguageTest extends TestCase {
         assertTrue("A".compareTo("B") < 0);
         assertEquals(0, "A".compareTo("A"));
         assertTrue("B".compareTo("A") > 0);
-    }
-    
-    enum Result { Good, Bad, Well };
-    public void testEnum() {
-        //System.out.println(Result.Good);
-        //System.out.println(Result.Bad);
-        //System.out.println(Result.Well);
     }
 }
