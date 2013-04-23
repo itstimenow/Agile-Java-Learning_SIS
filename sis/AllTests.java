@@ -7,6 +7,7 @@ public class AllTests {
         TestSuite suite = new TestSuite();
         suite.addTest(sis.studentinfo.AllTests.suite());
         suite.addTest(sis.report.AllTests.suite());
+        suite.addTest(sis.summer.AllTests.suite());
         suite.addTestSuite(LanguageTest.class);
         return suite;
     }

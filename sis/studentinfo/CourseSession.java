@@ -17,13 +17,11 @@ public class CourseSession implements Comparable<CourseSession> {
     private int numberOfCredits;
     
     
-    
-    private CourseSession(String department, String number, Date startDate) {
+    protected CourseSession(String department, String number, Date startDate) {
         this.department = department;
         this.number = number;
         this.startDate = startDate;
     }
-    
     
     
     public static CourseSession create(
@@ -61,6 +59,10 @@ public class CourseSession implements Comparable<CourseSession> {
         return number;
     }
     
+    protected Date getStartDate() {
+        return startDate;
+    }
+    
     public int getNumberOfStudents() {
         return students.size();
     }
@@ -78,13 +80,9 @@ public class CourseSession implements Comparable<CourseSession> {
         return students.get(index);
     }
     
-    Date getStartDate() {
-        return startDate;
-    }
-    
-    Date getEndDate() {
+    public Date getEndDate() {
         GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(startDate);
+        calendar.setTime(getStartDate());
         
         // The course session lasts 16 weeks, and each week has 7 days, so it 
         // seems that total number of days for the session is 16 * 7. But, 
