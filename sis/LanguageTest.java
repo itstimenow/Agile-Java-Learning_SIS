@@ -42,4 +42,11 @@ public class LanguageTest extends TestCase {
         assertEquals(0, "A".compareTo("A"));
         assertTrue("B".compareTo("A") > 0);
     }
+    
+    enum Result { Good, Bad, Well };
+    public void testEnum() {
+        System.out.println(Result.Good);
+        System.out.println(Result.Bad);
+        System.out.println(Result.Well);
+    }
 }
