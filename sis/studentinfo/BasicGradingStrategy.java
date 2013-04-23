@@ -2,10 +2,6 @@ package sis.studentinfo;
 
 public class BasicGradingStrategy implements GradingStrategy {
     public int getGradePointsFor(Student.Grade grade) {
-        return basicGradePointsFor(grade);
-    }
-    
-    int basicGradePointsFor(Student.Grade grade) {
         switch(grade) {
             case A: return 4;
             case B: return 3;
