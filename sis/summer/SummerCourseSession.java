@@ -16,17 +16,8 @@ public class SummerCourseSession extends CourseSession {
         super(department, number, startDate);
     }
     
-    public Date getEndDate() {
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTime(getStartDate());
-        
-        int sessionLength = 8;  // 8 weeks
-        int daysInWeek = 7;
-        // 2 days to reduce:
-        //   - last Saturday and Sunday, which are not included in the session
-        int daysToReduce = 2;
-        int numberOfDays = sessionLength * daysInWeek - daysToReduce;
-        calendar.add(Calendar.DAY_OF_YEAR, numberOfDays - 1);
-        return calendar.getTime();
+    @Override
+    protected int getSessionLength() {
+        return 8;
     }
 }

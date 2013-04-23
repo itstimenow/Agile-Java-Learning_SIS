@@ -84,18 +84,21 @@ public class CourseSession implements Comparable<CourseSession> {
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(getStartDate());
         
-        // The course session lasts 16 weeks, and each week has 7 days, so it 
-        // seems that total number of days for the session is 16 * 7. But, 
-        // wait, the last day of the session is the last Friday of the last 
-        // week, both the last Saturday and Sunday are not during the session, 
-        // so the total number of days for the session is 16 * 7 - 2.
-        //
-        // Also note that the start date is the first day of session, so the 
-        // end date is [total-number-of-days-for-the-session - 1] days after 
-        // the start date.
-        int numberOfDays = 16 * 7 - 2 - 1;
-        calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
+        // the number of weeks
+        int sessionLength = getSessionLength();
+        int daysPerWeek = 7;
+        // The last Saturday and Sunday are not included in the session
+        int daysToReduce = 2;
+        int numberOfDays = sessionLength * daysPerWeek - daysToReduce;
+        calendar.add(Calendar.DAY_OF_YEAR, numberOfDays - 1);
         return calendar.getTime();
+    }
+    
+    /**
+     * @return Number of weeks
+     */
+    protected int getSessionLength() {
+        return 16;
     }
     
     void setNumberOfCredits(int numberOfCredits) {
