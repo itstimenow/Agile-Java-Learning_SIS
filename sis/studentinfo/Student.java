@@ -3,7 +3,19 @@ package sis.studentinfo;
 import java.util.*;
 
 public class Student {
-    public enum Grade { A, B, C, D, F }
+    public enum Grade {
+        A(4), B(3), C(2), D(1), F(0);
+        
+        private int points;
+        
+        Grade(int points) {
+            this.points = points;
+        }
+        
+        int getPoints() {
+            return points;
+        }
+    }
     
     static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     static final String IN_STATE = "CO";
