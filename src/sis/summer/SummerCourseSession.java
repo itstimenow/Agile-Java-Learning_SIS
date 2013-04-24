@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.Date;
 import sis.studentinfo.*;
 
-public class SummerCourseSession extends CourseSession {
+public class SummerCourseSession extends Session {
     public static SummerCourseSession create(
             String department, String number, Date startDate) {
         return new SummerCourseSession(department, number, startDate);
