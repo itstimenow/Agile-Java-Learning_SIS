@@ -21,17 +21,72 @@ public class Student {
     static final String IN_STATE = "CO";
     
     private String name;
+    private String firstName = "";
+    private String middleName = "";
+    private String lastName = "";
     private int credits = 0;
     private String state = "";
     private List<Grade> grades = new ArrayList<Grade>();
     private GradingStrategy gradingStrategy = new BasicGradingStrategy();
     
-    public Student(String name) {
-        this.name = name;
+    
+    public Student(String fullName) {
+        this.name = fullName;
+        List<String> nameParts = split(fullName);
+        setName(nameParts);
+    }
+    
+    
+    private List<String> split(String string) {
+        List<String> results = new ArrayList<String>();
+        
+        StringBuffer word = new StringBuffer();
+        for (int index = 0; index < string.length(); index++) {
+            if (!Character.isWhitespace(string.charAt(index)))
+                word.append(string.charAt(index));
+            else if (word.length() > 0) {
+                results.add(word.toString());
+                word = new StringBuffer();
+            }
+        }
+        
+        if (word.length() > 0)
+            results.add(word.toString());
+        
+        return results;
+    }
+    
+    private void setName(List<String> nameParts) {
+        this.lastName = removeLast(nameParts);
+        String name = removeLast(nameParts);
+        if (nameParts.isEmpty())
+            this.firstName = name;
+        else {
+            this.middleName = name;
+            this.firstName = removeLast(nameParts);
+        }
+    }
+    
+    private String removeLast(List<String> list) {
+        if (list.isEmpty())
+            return "";
+        return list.remove(list.size() - 1);
     }
     
     public String getName() {
         return name;
+    }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getMiddleName() {
+        return middleName;
+    }
+    
+    public String getLastName() {
+        return lastName;
     }
         
     int getCredits() {

@@ -3,18 +3,30 @@ package sis.studentinfo;
 import junit.framework.TestCase;
 
 public class StudentTest extends TestCase {
+    
     private static final double GRADE_TOLERANCE = 0.05;
     
     public void testCreate() {
         final String firstStudentName = "Jane Doe";
         Student firstStudent = new Student(firstStudentName);
         assertEquals(firstStudentName, firstStudent.getName());
+        assertEquals("Jane", firstStudent.getFirstName());
+        assertEquals("", firstStudent.getMiddleName());
+        assertEquals("Doe", firstStudent.getLastName());
         
-        final String secondStudentName = "Joe Blow";
+        final String secondStudentName = "Blow";
         Student secondStudent = new Student(secondStudentName);
         assertEquals(secondStudentName, secondStudent.getName());
+        assertEquals("", secondStudent.getFirstName());
+        assertEquals("", secondStudent.getMiddleName());
+        assertEquals("Blow", secondStudent.getLastName());
         
-        assertEquals(firstStudentName, firstStudent.getName());
+        final String thirdStudentName = "Raymond Douglas Davies";
+        Student thirdStudent = new Student(thirdStudentName);
+        assertEquals(thirdStudentName, thirdStudent.getName());
+        assertEquals("Raymond", thirdStudent.getFirstName());
+        assertEquals("Douglas", thirdStudent.getMiddleName());
+        assertEquals("Davies", thirdStudent.getLastName());
     }
     
     public void testStudentStatus() {

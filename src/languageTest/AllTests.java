@@ -7,6 +7,7 @@ public class AllTests {
         TestSuite suite = new TestSuite();
         suite.addTestSuite(SortTest.class);
         suite.addTestSuite(SuperClassTest.class);
+        suite.addTestSuite(LoopTest.class);
         return suite;
     }
 }
