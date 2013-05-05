@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 
-public abstract class Session implements Comparable<Session> {
+
+public abstract class Session implements Comparable<Session>, Iterable<Student> {
     private String department;
     private String number;
     private List<Student> students = new ArrayList<Student>();
@@ -25,6 +27,10 @@ public abstract class Session implements Comparable<Session> {
             compare = this.getNumber().compareTo(that.getNumber());
         
         return compare;
+    }
+    
+    public Iterator<Student> iterator() {
+        return students.iterator();
     }
     
     public String getDepartment() {

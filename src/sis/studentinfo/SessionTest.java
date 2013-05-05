@@ -1,6 +1,8 @@
 package sis.studentinfo;
 
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import junit.framework.TestCase;
 
 public abstract class SessionTest extends TestCase {
@@ -79,5 +81,21 @@ public abstract class SessionTest extends TestCase {
         Student student = new Student("a");
         student.addCredits(Student.CREDITS_REQUIRED_FOR_FULL_TIME);
         return student;
+    }
+    
+    public void testIterate() {
+        enrollStudents(session);
+        
+        List<Student> results = new ArrayList<Student>();
+        for (Student student : session)
+            results.add(student);
+        
+        assertEquals(session.getAllStudents(), results);
+    }
+    
+    private void enrollStudents(Session session) {
+        session.enroll(new Student("1"));
+        session.enroll(new Student("2"));
+        session.enroll(new Student("3"));
     }
 }
