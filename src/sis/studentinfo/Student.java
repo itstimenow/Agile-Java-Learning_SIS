@@ -28,6 +28,7 @@ public class Student {
     private String state = "";
     private List<Grade> grades = new ArrayList<Grade>();
     private GradingStrategy gradingStrategy = new BasicGradingStrategy();
+    private List<Integer> charges = new ArrayList<Integer>();
     
     
     public Student(String fullName) {
@@ -126,5 +127,16 @@ public class Student {
             total += gradingStrategy.getGradePointsFor(grade);
         
         return total / grades.size();
+    }
+    
+    public void addCharge(int charge) {
+        charges.add(new Integer(charge));
+    }
+    
+    public int totalCharges() {
+        int total = 0;
+        for (int charge : charges)
+            total += charge;
+        return total;
     }
 }
