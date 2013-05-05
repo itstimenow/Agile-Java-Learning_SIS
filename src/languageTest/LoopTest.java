@@ -1,5 +1,7 @@
 package languageTest;
 
+import java.util.ArrayList;
+import java.util.List;
 import junit.framework.TestCase;
 
 
@@ -98,6 +100,57 @@ public class LoopTest extends TestCase {
         }
         
         return builder.toString();
+    }
+    
+    public void testEndTrim() {
+        assertEquals("", endTrim(""));
+        assertEquals(" x", endTrim(" x "));
+        assertEquals("y", endTrim("y"));
+        assertEquals("xaxa", endTrim("xaxa"));
+        assertEquals("", endTrim(" "));
+        assertEquals("xxx", endTrim("xxx \n \t \f \r   "));
+    }
+    
+    private String endTrim(String source) {
+        int i = source.length() - 1;
+        while (i >= 0) {
+            char ch = source.charAt(i);
+            if (!Character.isWhitespace(ch))
+                break;
+            i--;
+        }
+        return source.substring(0, i + 1);
+    }
+    
+    public void testLabeledBreak() {
+        ArrayList<ArrayList<Integer>> table = new ArrayList<ArrayList<Integer>>();
+        
+        ArrayList<Integer> row1 = new ArrayList<Integer>();
+        row1.add(5);
+        row1.add(2);
+        ArrayList<Integer> row2 = new ArrayList<Integer>();
+        row2.add(3);
+        row2.add(4);
+        
+        table.add(row1);
+        table.add(row2);
+        assertTrue(found(table, 3));
+        assertFalse(found(table, 8));
+    }
+    
+    private boolean found(ArrayList<ArrayList<Integer>> table, int target) {
+        boolean found = false;
+        
+        search:
+        for (ArrayList<Integer> row : table) {
+            for (Integer value : row)
+                if (value == target) {
+                    found = true;
+                    break search;
+                }
+        }
+        
+        return found;
     }
     
     private static int countChars(String input, char ch) {

@@ -15,8 +15,7 @@ public abstract class SessionTest extends TestCase {
         session.setNumberOfCredits(CREDITS);
     }
     
-    protected abstract Session createSession(
-            String department, String number, Date startDate);
+    protected abstract Session createSession(String department, String number, Date startDate);
     
     public void testCreate() {
         assertEquals("ENGL", session.getDepartment());
@@ -58,5 +57,27 @@ public abstract class SessionTest extends TestCase {
     public void testSessionLength() {
         Session session = createSession("", "", new Date());
         assertTrue(session.getSessionLength() > 0);
+    }
+    
+    public void testAverageGpaForPartTimeStudents() {
+        session.enroll(createFullTimeStudent());
+        
+        Student partTimeStudent01 = new Student("1");
+        partTimeStudent01.addGrade(Student.Grade.A);
+        session.enroll(partTimeStudent01);
+        
+        session.enroll(createFullTimeStudent());
+        
+        Student partTimeStudent02 = new Student("2");
+        partTimeStudent02.addGrade(Student.Grade.B);
+        session.enroll(partTimeStudent02);
+        
+        assertEquals(3.5, session.averageGpaForPartTimeStudents(), 0.05);
+    }
+    
+    private Student createFullTimeStudent() {
+        Student student = new Student("a");
+        student.addCredits(Student.CREDITS_REQUIRED_FOR_FULL_TIME);
+        return student;
     }
 }

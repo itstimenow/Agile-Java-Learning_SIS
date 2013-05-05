@@ -75,4 +75,19 @@ public abstract class Session implements Comparable<Session> {
     void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
     }
+    
+    public double averageGpaForPartTimeStudents() {
+        double total = 0.0;
+        int count = 0;
+        for (Student student : students) {
+            if (student.isFullTime())
+                continue;
+            total += student.getGpa();
+            count++;
+        }
+        
+        if (count == 0)
+            return 0.0;
+        return total / count;
+    }
 }
