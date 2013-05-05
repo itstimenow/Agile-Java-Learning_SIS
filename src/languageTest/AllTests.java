@@ -9,6 +9,7 @@ public class AllTests {
         suite.addTestSuite(SuperClassTest.class);
         suite.addTestSuite(LoopTest.class);
         suite.addTestSuite(CastTest.class);
+        suite.addTestSuite(ArrayTest.class);
         return suite;
     }
 }

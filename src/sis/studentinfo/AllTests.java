@@ -10,6 +10,7 @@ public class AllTests {
         suite.addTestSuite(DateUtilTest.class);
         suite.addTestSuite(BasicGradingStrategyTest.class);
         suite.addTestSuite(HonorsGradingStrategyTest.class);
+        suite.addTestSuite(PerformanceTest.class);
         return suite;
     }
 }
