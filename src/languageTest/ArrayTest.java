@@ -1,6 +1,8 @@
 package languageTest;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import junit.framework.TestCase;
 
 
@@ -45,5 +47,18 @@ public class ArrayTest extends TestCase {
         assertFalse(a == b);
         assertFalse(a.equals(b));
         assertTrue(Arrays.equals(a, b));
+    }
+    
+    public void testArraysAsList() {
+        List<String> nameList = new ArrayList<String>();
+        nameList.add("Mike");
+        nameList.add("David");
+        nameList.add("Bob");
+        
+        List<String> names = Arrays.asList("Mike", "David", "Bob");
+        assertEquals(nameList, names);
+        
+        names = Arrays.asList(new String[] { "Mike", "David", "Bob" });
+        assertEquals(nameList, names);
     }
 }

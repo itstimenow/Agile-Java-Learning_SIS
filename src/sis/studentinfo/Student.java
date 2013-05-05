@@ -38,22 +38,10 @@ public class Student {
     }
     
     
-    private List<String> split(String string) {
+    private List<String> split(String fullName) {
         List<String> results = new ArrayList<String>();
-        
-        StringBuffer word = new StringBuffer();
-        for (int index = 0; index < string.length(); index++) {
-            if (!Character.isWhitespace(string.charAt(index)))
-                word.append(string.charAt(index));
-            else if (word.length() > 0) {
-                results.add(word.toString());
-                word = new StringBuffer();
-            }
-        }
-        
-        if (word.length() > 0)
-            results.add(word.toString());
-        
+        for (String name : fullName.split(" "))
+            results.add(name);
         return results;
     }
     
