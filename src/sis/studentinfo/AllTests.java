@@ -11,6 +11,7 @@ public class AllTests {
         suite.addTestSuite(BasicGradingStrategyTest.class);
         suite.addTestSuite(HonorsGradingStrategyTest.class);
         suite.addTestSuite(PerformanceTest.class);
+        suite.addTestSuite(ScorerTest.class);
         return suite;
     }
 }
