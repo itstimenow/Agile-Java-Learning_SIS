@@ -19,4 +19,10 @@ public class ScorerTest extends TestCase {
         catch(NumberFormatException success) {
         }
     }
+    
+    public void testIsValid() {
+        Scorer scorer = new Scorer();
+        assertTrue(scorer.isValid("75"));
+        assertFalse(scorer.isValid("bd"));
+    }
 }
