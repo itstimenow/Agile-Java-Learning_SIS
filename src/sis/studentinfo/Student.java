@@ -39,10 +39,11 @@ public class Student {
     
     
     private List<String> split(String fullName) {
-        List<String> results = new ArrayList<String>();
-        for (String name : fullName.split(" "))
-            results.add(name);
-        return results;
+        List<String> fixedSizedNameList = Arrays.asList(fullName.split(" "));
+        
+        // Methods such as add, remove can't be performed on a fixed-size list, thus reconstruct an 
+        // list to support all these operations
+        return new ArrayList<String>(fixedSizedNameList);
     }
     
     private void setName(List<String> nameParts) {
