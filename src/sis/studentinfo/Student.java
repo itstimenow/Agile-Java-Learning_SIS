@@ -34,6 +34,9 @@ public class Student {
     public Student(String fullName) {
         this.name = fullName;
         List<String> nameParts = split(fullName);
+        final int maxNumberOfNameParts = 3;
+        if (nameParts.size() > maxNumberOfNameParts)
+            throw new StudentNameFormatException();
         setName(nameParts);
     }
     

@@ -29,6 +29,15 @@ public class StudentTest extends TestCase {
         assertEquals("Davies", thirdStudent.getLastName());
     }
     
+    public void testBadlyFormattedName() {
+        try {
+            new Student("a b c d");
+            fail("expected exception from 4-part name");
+        }
+        catch (StudentNameFormatException success) {
+        }
+    }
+    
     public void testStudentStatus() {
         Student student = new Student("a");
         assertEquals(0, student.getCredits());
