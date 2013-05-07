@@ -17,6 +17,8 @@ public class Student {
         }
     }
     
+    static final String TOO_MANY_NAME_PART_MSG = "Student name '%s' contains more than %d parts";
+    static final int MAX_NAME_PARTS = 3;
     static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     static final String IN_STATE = "CO";
     
@@ -34,10 +36,9 @@ public class Student {
     public Student(String fullName) {
         this.name = fullName;
         List<String> nameParts = split(fullName);
-        final int maxNumberOfNameParts = 3;
-        if (nameParts.size() > maxNumberOfNameParts) {
-            String message = "Student name '" + fullName 
-                             + "' contains more than " + maxNumberOfNameParts + " parts";
+        if (nameParts.size() > Student.MAX_NAME_PARTS) {
+            String message = String.format(Student.TOO_MANY_NAME_PART_MSG, 
+                                           fullName, Student.MAX_NAME_PARTS);
             throw new StudentNameFormatException(message);
         }
         setName(nameParts);
