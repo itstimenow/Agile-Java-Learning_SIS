@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 
 public abstract class Session implements Comparable<Session>, Iterable<Student> {
@@ -14,6 +16,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
     private List<Student> students = new ArrayList<Student>();
     private Date startDate;
     private int numberOfCredits;
+    private URL url;
     
     protected Session(String department, String number, Date startDate) {
         this.department = department;
@@ -43,6 +46,14 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
     
     protected Date getStartDate() {
         return startDate;
+    }
+    
+    public URL getUrl() {
+        return url;
+    }
+    
+    public void setUrl(String urlString) throws MalformedURLException {
+        this.url = new URL(urlString);
     }
     
     public int getNumberOfStudents() {
