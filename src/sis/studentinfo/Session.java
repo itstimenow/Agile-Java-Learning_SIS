@@ -52,8 +52,18 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
         return url;
     }
     
-    public void setUrl(String urlString) throws MalformedURLException {
-        this.url = new URL(urlString);
+    public void setUrl(String urlString) throws SessionException {
+        try {
+            this.url = new URL(urlString);
+        }
+        catch (MalformedURLException e) {
+            log(e);
+            throw new SessionException(e);
+        }
+    }
+    
+    private void log(Exception e) {
+        // logging code
     }
     
     public int getNumberOfStudents() {

@@ -101,7 +101,7 @@ public abstract class SessionTest extends TestCase {
         session.enroll(new Student("3"));
     }
     
-    public void testValidSessionUrl() throws MalformedURLException {
+    public void testValidSessionUrl() throws SessionException {
         final String url = "http://course.langrsoft.com/cmsc300";
         session.setUrl(url);
         assertEquals(url, session.getUrl().toString());
@@ -113,7 +113,9 @@ public abstract class SessionTest extends TestCase {
             session.setUrl(url);
             fail("expected exception due to invalid protocol in URL");
         }
-        catch (MalformedURLException success) {
+        catch (SessionException expectedException) {
+            Throwable cause = expectedException.getCause();
+            assertTrue(cause instanceof MalformedURLException);
         }
     }
 }
