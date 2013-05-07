@@ -63,7 +63,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
     }
     
     private void log(Exception e) {
-        // logging code
+        e.printStackTrace();
     }
     
     public int getNumberOfStudents() {
