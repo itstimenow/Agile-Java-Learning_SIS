@@ -1,5 +1,6 @@
 package sis.studentinfo;
 
+import java.util.logging.*;
 import junit.framework.TestCase;
 
 public class StudentTest extends TestCase {
@@ -30,6 +31,9 @@ public class StudentTest extends TestCase {
     }
     
     public void testBadlyFormattedName() {
+        Handler handler = new TestHandler();
+        Student.logger.addHandler(handler);
+        
         final String studentName = "a b c d";
         try {
             new Student("a b c d");
@@ -39,7 +43,12 @@ public class StudentTest extends TestCase {
             String message = String.format(Student.TOO_MANY_NAME_PART_MSG,
                                            studentName, Student.MAX_NAME_PARTS);
             assertEquals(message, expectedException.getMessage());
+            assertEquals(message, ((TestHandler)handler).getMessage());
         }
+    }
+    
+    private boolean wasLogged(String message, TestHandler handler) {
+        return message.equals(handler.getMessage());
     }
     
     public void testStudentStatus() {

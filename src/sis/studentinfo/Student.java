@@ -1,6 +1,10 @@
 package sis.studentinfo;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.*;
+
 
 public class Student {
     public enum Grade {
@@ -21,6 +25,7 @@ public class Student {
     static final int MAX_NAME_PARTS = 3;
     static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
     static final String IN_STATE = "CO";
+    static final Logger logger = Logger.getLogger(Student.class.getName());
     
     private String name;
     private String firstName = "";
@@ -39,6 +44,7 @@ public class Student {
         if (nameParts.size() > Student.MAX_NAME_PARTS) {
             String message = String.format(Student.TOO_MANY_NAME_PART_MSG, 
                                            fullName, Student.MAX_NAME_PARTS);
+            Student.logger.info(message);
             throw new StudentNameFormatException(message);
         }
         setName(nameParts);
