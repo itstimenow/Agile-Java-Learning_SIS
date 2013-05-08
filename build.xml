@@ -26,9 +26,10 @@
     </target>
     
     <target name="junitgui" depends="build" description="run junit gui">
-        <java classname="junit.textui.TestRunner" fork="yes">
+        <java classname="junit.textui.TestRunner" fork="true">
             <arg value="AllTests" />
             <classpath refid="classpath" />
+            <sysproperty key="java.util.logging.config.file" value="lib/logging.properties"/>
         </java>
     </target>
     
