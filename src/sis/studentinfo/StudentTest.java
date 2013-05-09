@@ -51,6 +51,14 @@ public class StudentTest extends TestCase {
         return message.equals(handler.getMessage());
     }
     
+    public void testStudentId() {
+        Student student = new Student("name");
+        
+        final String id = "XYZ_123";
+        student.setId(id);
+        assertEquals(id, student.getId());
+    }
+    
     public void testStudentStatus() {
         Student student = new Student("a");
         assertEquals(0, student.getCredits());

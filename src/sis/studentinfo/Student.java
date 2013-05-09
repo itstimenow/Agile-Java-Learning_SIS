@@ -27,6 +27,7 @@ public class Student {
     static final String IN_STATE = "CO";
     static final Logger logger = Logger.getLogger(Student.class.getName());
     
+    private String id;
     private String name;
     private String firstName = "";
     private String middleName = "";
@@ -90,6 +91,14 @@ public class Student {
     
     public String getLastName() {
         return lastName;
+    }
+    
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String value) {
+        id = value;
     }
         
     int getCredits() {

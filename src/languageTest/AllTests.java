@@ -11,6 +11,7 @@ public class AllTests {
         suite.addTestSuite(CastTest.class);
         suite.addTestSuite(ArrayTest.class);
         suite.addTestSuite(LoggingTest.class);
+        suite.addTestSuite(LogicalOperatorTest.class);
         return suite;
     }
 }
