@@ -1,13 +1,13 @@
 package sis.report;
 
 import java.util.*;
-import sis.studentinfo.CourseSession;
+import sis.studentinfo.*;
 import static sis.report.ReportConstant.NEWLINE;
 
 public class CourseReport {
-    private ArrayList<CourseSession> sessions = new ArrayList<CourseSession>();
+    private ArrayList<Session> sessions = new ArrayList<Session>();
     
-    public void add(CourseSession session) {
+    public void add(Session session) {
         sessions.add(session);
     }
     
@@ -15,7 +15,7 @@ public class CourseReport {
         Collections.sort(sessions);
         
         StringBuilder builder = new StringBuilder();
-        for (CourseSession session : sessions)
+        for (Session session : sessions)
             builder.append(session.getDepartment() + " " 
                            + session.getNumber() + NEWLINE);
         return builder.toString();

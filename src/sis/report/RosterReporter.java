@@ -4,14 +4,15 @@ import sis.studentinfo.*;
 import static sis.report.ReportConstant.NEWLINE;
 
 class RosterReporter {
-    private CourseSession session;
+    
+    private Session session;
     
     static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + 
         "--" + NEWLINE;
     static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 
     
-    RosterReporter(CourseSession session) {
+    RosterReporter(Session session) {
         this.session = session;
     }
     

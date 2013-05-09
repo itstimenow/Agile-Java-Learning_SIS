@@ -11,18 +11,20 @@ import java.net.MalformedURLException;
 
 
 public abstract class Session implements Comparable<Session>, Iterable<Student> {
-    private String department;
-    private String number;
+    private Course course;
     private List<Student> students = new ArrayList<Student>();
     private Date startDate;
     private int numberOfCredits;
     private URL url;
     
-    protected Session(String department, String number, Date startDate) {
-        this.department = department;
-        this.number = number;
+    
+    protected Session(Course course, Date startDate) {
+        this.course = course;
         this.startDate = startDate;
     }
+    
+    
+    protected abstract int getSessionLength();
     
     public int compareTo(Session that) {
         int compare = this.getDepartment().compareTo(that.getDepartment());
@@ -37,11 +39,11 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
     }
     
     public String getDepartment() {
-        return department;
+        return course.getDepartment();
     }
     
     public String getNumber() {
-        return number;
+        return course.getNumber();
     }
     
     protected Date getStartDate() {
@@ -96,8 +98,6 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDays - 1);
         return calendar.getTime();
     }
-    
-    protected abstract int getSessionLength();
     
     void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;

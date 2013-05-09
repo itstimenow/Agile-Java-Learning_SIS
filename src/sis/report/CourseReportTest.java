@@ -9,17 +9,22 @@ public class CourseReportTest extends TestCase {
     public void testReport() {
         final Date date = new Date();
         CourseReport report = new CourseReport();
-        report.add(CourseSession.create("ENGL", "101", date));
-        report.add(CourseSession.create("CZEC", "200", date));
-        report.add(CourseSession.create("ITAL", "410", date));
-        report.add(CourseSession.create("CZEC", "220", date));
-        report.add(CourseSession.create("ITAL", "330", date));
+        report.add(createSession("ENGL", "101", date));
+        report.add(createSession("CZEC", "200", date));
+        report.add(createSession("ITAL", "410", date));
+        report.add(createSession("CZEC", "220", date));
+        report.add(createSession("ITAL", "330", date));
         
-        assertEquals("CZEC 200" + NEWLINE
-                     + "CZEC 220" + NEWLINE
-                     + "ENGL 101" + NEWLINE
-                     + "ITAL 330" + NEWLINE
-                     + "ITAL 410" + NEWLINE,
+        assertEquals(String.format(  "CZEC 200%n"
+                                   + "CZEC 220%n"
+                                   + "ENGL 101%n"
+                                   + "ITAL 330%n"
+                                   + "ITAL 410%n"), 
                      report.text());
+    }
+    
+    private Session createSession(String department, String number, Date date) {
+        Course course = new Course(department, number);
+        return CourseSession.create(course, date);
     }
 }

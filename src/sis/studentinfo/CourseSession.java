@@ -8,16 +8,18 @@ import java.util.*;
  * @author Administrator
  */
 public class CourseSession extends Session {
+    
     private static int count = 0;
     
-    public static CourseSession create(
-            String department, String number, Date startDate) {
-        return new CourseSession(department, number, startDate);
+    
+    private CourseSession(Course course, Date startDate) {
+        super(course, startDate);
     }
     
-    private CourseSession(String department, String number, Date startDate) {
-        super(department, number, startDate);
-        CourseSession.incrementCount();
+    
+    public static Session create(Course course, Date startDate) {
+        incrementCount();
+        return new CourseSession(course, startDate);
     }
     
     static void resetCount() {

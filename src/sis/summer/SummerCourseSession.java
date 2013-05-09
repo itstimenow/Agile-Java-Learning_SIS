@@ -6,14 +6,13 @@ import java.util.Date;
 import sis.studentinfo.*;
 
 public class SummerCourseSession extends Session {
-    public static SummerCourseSession create(
-            String department, String number, Date startDate) {
-        return new SummerCourseSession(department, number, startDate);
+
+    private SummerCourseSession(Course course, Date startDate) {
+        super(course, startDate);
     }
     
-    private SummerCourseSession(String department, String number, 
-                                Date startDate) {
-        super(department, number, startDate);
+    public static Session create(Course course, Date startDate) {
+        return new SummerCourseSession(course, startDate);
     }
     
     @Override
