@@ -18,4 +18,11 @@ public class Course {
     public String getNumber() {
         return number;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Course that = (Course)obj;
+        return this.department.equals(that.department)
+               && this.number.equals(that.number);
+    }
 }
