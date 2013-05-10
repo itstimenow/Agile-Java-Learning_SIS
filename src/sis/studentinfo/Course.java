@@ -24,6 +24,9 @@ public class Course {
         if (obj == null)
             return false;
         
+        if (this.getClass() != obj.getClass())
+            return false;
+        
         Course that = (Course)obj;
         return this.department.equals(that.department)
                && this.number.equals(that.number);
