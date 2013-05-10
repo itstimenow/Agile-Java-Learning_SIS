@@ -21,6 +21,9 @@ public class Course {
     
     @Override
     public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        
         Course that = (Course)obj;
         return this.department.equals(that.department)
                && this.number.equals(that.number);
