@@ -12,6 +12,7 @@ public class AllTests {
         suite.addTestSuite(ArrayTest.class);
         suite.addTestSuite(LoggingTest.class);
         suite.addTestSuite(LogicalOperatorTest.class);
+        suite.addTestSuite(HashMapTest.class);
         return suite;
     }
 }
