@@ -26,4 +26,9 @@ public class PerformanceTest extends TestCase {
         performance.setScores(100, 90);
         assertEquals(95.0, performance.average(), TOLERANCE);
     }
+    
+    public void testAverageForNoScores() {
+        Performance performance = new Performance();
+        assertEquals(0.0, performance.average());
+    }
 }

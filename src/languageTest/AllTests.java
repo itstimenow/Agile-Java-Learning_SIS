@@ -13,6 +13,7 @@ public class AllTests {
         suite.addTestSuite(LoggingTest.class);
         suite.addTestSuite(LogicalOperatorTest.class);
         suite.addTestSuite(HashMapTest.class);
+        suite.addTestSuite(MathmaticsTest.class);
         return suite;
     }
 }

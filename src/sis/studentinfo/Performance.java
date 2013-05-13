@@ -22,6 +22,9 @@ public class Performance {
     }
     
     public double average() {
+        if (tests == null || tests.length == 0)
+            return 0.0;
+        
         double total = 0;
         for (int score : tests)
             total += score;
