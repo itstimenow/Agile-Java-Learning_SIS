@@ -3,7 +3,7 @@ package languageTest;
 import junit.framework.*;
 
 
-public class MathmaticsTest extends TestCase {
+public class MathematicsTest extends TestCase {
     
     public void testNaN() {
         assertFalse(Double.NaN > 1.0);
@@ -47,5 +47,15 @@ public class MathmaticsTest extends TestCase {
         assertTrue(Float.isNaN(Float.NEGATIVE_INFINITY % Float.POSITIVE_INFINITY));
         assertTrue(Float.isNaN(Float.NEGATIVE_INFINITY / Float.NEGATIVE_INFINITY));
         assertTrue(Float.isNaN(Float.NEGATIVE_INFINITY % Float.NEGATIVE_INFINITY));
+    }
+    
+    public void testOverflow() {
+        byte b = Byte.MAX_VALUE;
+        assertEquals(Byte.MAX_VALUE + 1, (int)b + 1);
+        
+        b += 1;
+        assertEquals(Byte.MIN_VALUE, b);
+        
+        assertTrue(Double.isInfinite(Double.MAX_VALUE * Double.MAX_VALUE));
     }
 }
