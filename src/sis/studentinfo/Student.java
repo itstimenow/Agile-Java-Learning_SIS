@@ -7,19 +7,6 @@ import java.util.logging.*;
 
 
 public class Student {
-    public enum Grade {
-        A(4), B(3), C(2), D(1), F(0);
-        
-        private int points;
-        
-        Grade(int points) {
-            this.points = points;
-        }
-        
-        int getPoints() {
-            return points;
-        }
-    }
     
     static final String TOO_MANY_NAME_PART_MSG = "Student name '%s' contains more than %d parts";
     static final int MAX_NAME_PARTS = 3;
@@ -34,6 +21,7 @@ public class Student {
     private String lastName = "";
     private int credits = 0;
     private String state = "";
+    private int settings = 0x0;
     private List<Grade> grades = new ArrayList<Grade>();
     private GradingStrategy gradingStrategy = new BasicGradingStrategy();
     private List<Integer> charges = new ArrayList<Integer>();
@@ -152,5 +140,55 @@ public class Student {
         for (int charge : charges)
             total += charge;
         return total;
+    }
+    
+    public void set(Flag... flags) {
+        for (Flag flag : flags) {
+            settings |= flag.mask;
+        }
+    }
+    
+    public void unset(Flag flag) {
+        settings &= ~flag.mask;
+    }
+    
+    public boolean isOn(Flag flag) {
+        return (settings & flag.mask) == flag.mask;
+    }
+    
+    public boolean isOff(Flag flag) {
+        return !isOn(flag);
+    }
+    
+    
+    //============================================
+    // Inner types 
+    //============================================
+    
+    public enum Grade {
+        A(4), B(3), C(2), D(1), F(0);
+        
+        private int points;
+        
+        Grade(int points) {
+            this.points = points;
+        }
+        
+        int getPoints() {
+            return points;
+        }
+    }
+    
+    public enum Flag {
+        ON_CAMPUS(1),
+        TAX_EXEMPT(2),
+        MINOR(4),
+        TROUBLEMAKER(8);
+        
+        private int mask;
+        
+        Flag(int mask) {
+            this.mask = mask;
+        }
     }
 }

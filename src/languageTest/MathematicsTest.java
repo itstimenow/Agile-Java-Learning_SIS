@@ -58,4 +58,40 @@ public class MathematicsTest extends TestCase {
         
         assertTrue(Double.isInfinite(Double.MAX_VALUE * Double.MAX_VALUE));
     }
+    
+    public void testXor() {
+        int x = 5;
+        int y = 7;
+        int xPrime = x ^ y;
+        assertEquals(2, xPrime);
+        assertEquals(x, xPrime ^ y);
+    }
+    
+    public void testParity() {
+        assertEquals(0, xorAll(0, 1, 0, 1));
+        assertEquals(1, xorAll(0, 1, 1, 1));
+    }
+    
+    private int xorAll(int first, int... rest) {
+        int parity = first;
+        for (int num : rest)
+            parity ^= num;
+        return parity;
+    }
+    
+    public void testBitShifting() {
+        assertEquals(10, 5 << 1);
+        assertEquals(20, 5 << 2);
+        assertEquals(40, 5 << 3);
+        assertEquals(20, 40 >> 1);
+        assertEquals(10, 40 >> 2);
+        
+        assertEquals(-20, -10 << 1);
+        assertEquals(-5, -10 >> 1);
+        
+        assertEquals(5, 10 >>> 1);
+        assertEquals(2147483643, -10 >>> 1);
+        // 1111_1111_1111_1111_1111_1111_1111_0110 = -10
+        // 0111_1111_1111_1111_1111_1111_1111_1011 = 2147483643
+    }
 }
