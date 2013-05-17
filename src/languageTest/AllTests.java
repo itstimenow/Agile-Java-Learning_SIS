@@ -15,6 +15,7 @@ public class AllTests {
         suite.addTestSuite(HashMapTest.class);
         suite.addTestSuite(MathematicsTest.class);
         suite.addTestSuite(NumericWrapperClassTest.class);
+        suite.addTestSuite(RandomTest.class);
         return suite;
     }
 }
