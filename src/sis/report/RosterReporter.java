@@ -1,40 +1,40 @@
 package sis.report;
 
+import java.io.*;
 import sis.studentinfo.*;
-import static sis.report.ReportConstant.NEWLINE;
+
 
 class RosterReporter {
     
     private Session session;
+    private Writer writer;
     
-    static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + 
-        "--" + NEWLINE;
-    static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
+    static final String ROSTER_REPORT_HEADER = "Student%n-%n";
+    static final String ROSTER_REPORT_FOOTER = "%n# students = %d%n";
 
     
     RosterReporter(Session session) {
         this.session = session;
     }
     
-    String getReport() {
-        StringBuilder buffer = new StringBuilder();
-        writeHeader(buffer);
-        writeBody(buffer);
-        writeFooter(buffer);
-        return buffer.toString();
+    void writeReport(Writer writer) throws IOException {
+        this.writer = writer;
+        writeHeader();
+        writeBody();
+        writeFooter();
     }
     
-    private void writeHeader(StringBuilder buffer) {
-        buffer.append(ROSTER_REPORT_HEADER);
+    private void writeHeader() throws IOException {
+        writer.write(String.format(ROSTER_REPORT_HEADER));
     }
     
-    private void writeBody(StringBuilder buffer) {
+    private void writeBody() throws IOException {
         for (Student student : session.getAllStudents())
-            buffer.append(student.getName() + NEWLINE);
+            writer.write(String.format(student.getName() + "%n"));
     }
     
-    private void writeFooter(StringBuilder buffer) {
-        buffer.append(ROSTER_REPORT_FOOTER + 
-            session.getNumberOfStudents() + NEWLINE);
+    private void writeFooter() throws IOException {
+        writer.write(
+            String.format(ROSTER_REPORT_FOOTER, session.getNumberOfStudents()));
     }
 }
