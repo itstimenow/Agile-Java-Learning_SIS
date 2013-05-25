@@ -17,6 +17,16 @@ class RosterReporter {
         this.session = session;
     }
     
+    void writeReport(String filename) throws IOException {
+        Writer bufferedWriter = new BufferedWriter(new FileWriter(filename));
+        try {
+            writeReport(bufferedWriter);
+        }
+        finally {
+            bufferedWriter.close();
+        }
+    }
+    
     void writeReport(Writer writer) throws IOException {
         this.writer = writer;
         writeHeader();
