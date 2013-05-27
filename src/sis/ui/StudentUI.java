@@ -17,6 +17,11 @@ public class StudentUI {
     private List<Student> students = new ArrayList<Student>();
     
     
+    public StudentUI() {
+        reader = new BufferedReader(new InputStreamReader(System.in));
+        writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    }
+    
     public StudentUI(BufferedReader reader, BufferedWriter writer) {
         this.reader = reader;
         this.writer = writer;
@@ -53,6 +58,10 @@ public class StudentUI {
         write(line);
         writer.newLine();
         writer.flush();
+    }
+    
+    public static final void main(String[] args) throws IOException {
+        new StudentUI().run();
     }
     
 }
