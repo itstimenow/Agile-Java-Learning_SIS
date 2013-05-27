@@ -25,8 +25,9 @@ public abstract class SessionTest extends TestCase {
     public void testCreate() {
         assertEquals("ENGL", session.getDepartment());
         assertEquals("101", session.getNumber());
-        assertEquals(0, session.getNumberOfStudents());
         assertEquals(startDate, session.getStartDate());
+        assertEquals(CREDITS, session.getNumberOfCredits());
+        assertEquals(0, session.getNumberOfStudents());
     }
     
     public void testEnrollStudents() {

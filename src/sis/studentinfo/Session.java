@@ -99,8 +99,12 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
         return calendar.getTime();
     }
     
-    void setNumberOfCredits(int numberOfCredits) {
+    public void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
+    }
+    
+    public int getNumberOfCredits() {
+        return numberOfCredits;
     }
     
     public double averageGpaForPartTimeStudents() {
