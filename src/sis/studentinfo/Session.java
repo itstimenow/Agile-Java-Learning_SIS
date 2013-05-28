@@ -8,15 +8,17 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.net.URL;
 import java.net.MalformedURLException;
+import java.io.*;
 
 
-public abstract class Session implements Comparable<Session>, Iterable<Student> {
+public abstract class Session
+        implements Comparable<Session>, Iterable<Student>, Serializable {
+    
     private Course course;
-    private List<Student> students = new ArrayList<Student>();
+    private transient List<Student> students = new ArrayList<Student>();
     private Date startDate;
     private int numberOfCredits;
     private URL url;
-    
     
     protected Session(Course course, Date startDate) {
         this.course = course;
@@ -120,5 +122,24 @@ public abstract class Session implements Comparable<Session>, Iterable<Student> 
         if (count == 0)
             return 0.0;
         return total / count;
+    }
+    
+    private void writeObject(ObjectOutputStream output)
+            throws IOException {
+        output.defaultWriteObject();
+        output.writeInt(students.size());
+        for (Student student : students)
+            output.writeObject(student.getLastName());
+    }
+    
+    private void readObject(ObjectInputStream input) 
+            throws IOException, ClassNotFoundException {
+        input.defaultReadObject();
+        students = new ArrayList<Student>();
+        int size = input.readInt();
+        for (int i = 0; i < size; i++) {
+            String lastName = (String)input.readObject();
+            students.add(Student.findByLastName(lastName));
+        }
     }
 }

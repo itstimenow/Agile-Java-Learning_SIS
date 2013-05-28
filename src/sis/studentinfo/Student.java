@@ -65,6 +65,12 @@ public class Student {
         return list.remove(list.size() - 1);
     }
     
+    
+    public static Student findByLastName(String lastName) {
+        return new Student(lastName);
+    }
+    
+    
     public String getName() {
         return name;
     }
